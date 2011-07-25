@@ -1,0 +1,27 @@
+This version of Tetris implements most of the rules of guideline
+Tetris, including SRS (rotation system) with wall kicks. The wall
+kick code has been written in such a way to make it reasonably
+simple to implement other rotation systems as well.
+I have chosen, however, to only implement line counts, not scoring,
+and so T-Spins and board clears are not acknowledged, as per old-school
+Tetris rules.
+
+There are essentially 3 layers to the code: The Engine,
+the UI State Machine, and the OS Wrapper
+  Engine - This layer, composed of the Tetris class and all of the classes
+        it contains, encapsulates all of the rules for the main game mode.
+  UI State Machine - This layer uses instances of the abstract State class
+        to describe each screen/mode of the game. Each State describes how
+        it should be drawn, how input should be processed, and how it
+        should transition to other states.
+        This layer also contains an abstract instance of the Game class,
+        which provides some useful drawing abstractions.
+  OS Wrapper - This layer provides a concrete instance of the Game class
+        by providing wrappers for the necessary OS/GUI toolkit-dependent
+        drawing functions, and a structure with references to the game's
+        images.
+
+Future Versions:
+ - More Animations
+ - Fadeout/fadein transition states
+ - Network Multiplayer
